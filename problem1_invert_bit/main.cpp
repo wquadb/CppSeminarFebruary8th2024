@@ -19,29 +19,27 @@ unsigned short invertIthBit(unsigned short n, uint8_t k)
 {
     unsigned short mask = 0x1 << k;
     return n ^ mask;
-
 }
 
-void printBinNumber(unsigned short n)
-{
-    unsigned short mask = 0x8000;
-    for (size_t i = 0; i < sizeof(unsigned short) * 8; ++i)
-    {
-        std::cout << (n & mask);
-        mask = mask >> 1;
-    }
+void printBinary(unsigned char v) {
+    int i;
+    for(i = 7; i >= 0; i--) putchar('0' + ((v >> i) & 1));
 }
 
 int main()
 {
-    unsigned short n = 300;
-    std::cout << "inishial n: " << n << " " << std::hex << n << " ";
-    printBinNumber(n);
-    n = invertIthBit(n, 5);
-    std::cout <<"\nchange bit 5: " <<  n << " " << std::hex << n << " ";
-    printBinNumber(n);
+    unsigned short n = 0b10101010;
+    uint8_t k = 1;
 
+    std::cout << "initial number - " << n << " | in binary - ";
+    printBinary(n);
+    std::cout << std::endl;
 
+    n = invertIthBit(n, k);
+
+    std::cout <<"changed number - " << n << " | in binary - ";
+    printBinary(n);
+    std::cout << std::endl;
 
     return 0;
 }

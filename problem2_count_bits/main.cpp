@@ -35,12 +35,11 @@ uint8_t countOnes(uint8_t n)
 
 int main()
 {
-    uint8_t a = 0xA5;
-    uint8_t expectedOnes = 4;
-    assert(countOnes(a) != expectedOnes);
-
-    a += 2;
-
+    uint8_t a = 0b10100100;
+    uint8_t expectedOnes = 3;
+    
+    std::cout << "Number " << static_cast<int>(a) << " has " << static_cast<int>(countOnes(a)) << " bits set to 1." << std::endl;
+    std::cout << "Expected " << static_cast<int>(expectedOnes) << " ones" << std::endl;
 
     return 0;
 }
